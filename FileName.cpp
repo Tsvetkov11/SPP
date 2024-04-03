@@ -1,56 +1,33 @@
+#include <iostream> 
 
-#include <iostream>
-#include <vector>
-#include <Windows.h>
+#include <cmath> 
 
 using namespace std;
 
-class Book {
-private:
-    string author;
-    int year;
+const double PI = 3.14159265358979323846;
 
-public:
+void radiansToDegrees(double radians, double& degrees) {
 
-    Book(string author, int year) : author(author), year(year) {}
-    string getAuthor() const {
-        return author;
-    }
-    int getYear() const {
-        return year;
-    }
-};
+    degrees = (radians * 180.0) / PI;
 
-void sortLibraryByYear(vector<Book>& library) {
-    int n = library.size();
-    for (int i = 0; i < n - 1; ++i) {
-    for (int j = 0;j < n - i - 1; ++j) {
-    if (library[j].getYear() > library[j + 1].getYear()) {
-    swap(library[j], library[j + 1]);
-       }
-      }
-     }
-    }
+}
 
 int main() {
-    SetConsoleOutputCP(1251);
-    SetConsoleCP(1251);
 
-    vector<Book> library;
+    double angleRadians;
 
-    library.push_back(Book("Гаррі Поттер і філософський камінь", 1997));
-    library.push_back(Book("Гаррі Поттер і Таємна кімната", 1998));
-    library.push_back(Book("Гаррі Поттер і в'язень Азкабану", 1999));
-    library.push_back(Book("Гаррі Поттер і Келих вогню", 2000));
-    library.push_back(Book("Гаррі Поттер і Напівкровний Принц", 2005));
-    library.push_back(Book("Гаррі Поттер і Смертельні реліквії", 2007));
-    library.push_back(Book("Гаррі Поттер і Орден Фенікса", 2003));
+    cout << "Enter the angle in radians: ";
 
-    sortLibraryByYear(library);
+    cin >> angleRadians;
 
-    cout << "Бібліотека впорядкована за роками видання:\n";
-    for (const auto& book : library) {
-        cout << "Назва книги: " << book.getAuthor() << ", Рік: " << book.getYear() << endl;
-    }
+    double angleDegrees;
+
+    radiansToDegrees(angleRadians, angleDegrees);
+
+    cout << "Angle in radians: " << angleRadians << endl;
+
+    cout << "Angle in degrees: " << angleDegrees << endl;
+
     return 0;
+
 }
